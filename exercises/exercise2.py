@@ -1,9 +1,11 @@
 import gym
 import numpy as np
+from time import sleep
 
 env = gym.make('CartPole-v0')
 
 num_episodes = 100
+num_testing_episodes = 10
 num_steps = 200
 num_iterations = 50
 train_params = {"EHC": {"mutation_step_size": 0.02, "population_size": 20}}
@@ -66,6 +68,7 @@ def run_episode(NN_params = None, render=False):
     while not done:
         if(render):
             env.render()
+            sleep(0.001)
 
         if(NN_params is None):
             action = random_action_policy()
@@ -134,11 +137,12 @@ def evolutionary_hill_climber(params):
         population_evaluation_scores.append(evaluate(training_params))
     # print(population_evaluation_scores)
     u = rank(population_evaluation_scores)
-    for i in range(10):
+    for i in range(num_testing_episodes):
         reward = run_episode(NN_params=theta_to_params(theta_params[u[0]]), render=True)
         print(reward)
         cumulative_reward += reward
     print(cumulative_reward)
+
 if __name__ == '__main__':
     # for i in range(num_episodes):
         # run_episode(NN_params= NN_init_params, render=True)
