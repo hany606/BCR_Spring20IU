@@ -3,8 +3,9 @@
 This directory includes the exercises for the 1st week.
 
 The exercises includes:
-	* Exercise1: Testing and learning how to use gym environments
-	* Exercise2: Implement Evolutionary Hill-Climber with simple Neural Network and train it.
+
+* Exercise1: Testing and learning how to use gym environments
+* Exercise2: Implement Evolutionary Hill-Climber with simple Neural Network and train it.
 
 To run the exercises, a docker file has been created from the team of the course as ready environment.
 
